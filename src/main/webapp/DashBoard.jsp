@@ -18,6 +18,12 @@
             padding: 10px;
             text-align: left;
         }
+
+        .btn {
+            padding: 5px 10px;
+            margin: 2px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -29,6 +35,7 @@
                 <th>Email</th>
                 <th>Message</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -43,13 +50,20 @@
                             <td><%= contact.getEmail() %></td>
                             <td><%= contact.getMessage() %></td>
                             <td><%= contact.getStatus() %></td>
+                            <td>
+                                <form action="dashboard" method="post">
+                                    <input type="hidden" name="contactId" value="<%= contact.getId() %>">
+                                    <input type="hidden" name="currentStatus" value="<%= contact.getStatus() %>">
+                                    <button type="submit" class="btn">Archive</button>
+                                </form>
+                            </td>
                         </tr>
             <%
                     }
                 } else {
             %>
                     <tr>
-                        <td colspan="4">No active data available</td>
+                        <td colspan="5">No active data available</td>
                     </tr>
             <%
                 }
@@ -67,6 +81,7 @@
                 <th>Email</th>
                 <th>Message</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -81,19 +96,30 @@
                             <td><%= contact.getEmail() %></td>
                             <td><%= contact.getMessage() %></td>
                             <td><%= contact.getStatus() %></td>
+                            <td>
+                                <form action="dashboard" method="post">
+                                    <input type="hidden" name="contactId" value="<%= contact.getId() %>">
+                                    <input type="hidden" name="currentStatus" value="<%= contact.getStatus() %>">
+                                    <button type="submit" class="btn">Activate</button>
+                                </form>
+                            </td>
                         </tr>
             <%
                     }
                 } else {
             %>
                     <tr>
-                        <td colspan="4">No archived data available</td>
+                        <td colspan="5">No archived data available</td>
                     </tr>
             <%
                 }
             %>
         </tbody>
     </table>
+    <br><br>
+    <form action="ContactUs">
+    <input type ="submit" value="Contact Us">
+    </form>
     
 </body>
 </html>

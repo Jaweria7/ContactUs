@@ -66,4 +66,16 @@ public class ContactDAO {
         }
         return contacts;
     }
+    
+    public void updateContactStatus(int contactId, String newStatus) {
+        String updateQuery = "UPDATE contacts SET status = ? WHERE id = ?";
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+            preparedStatement.setString(1, newStatus);
+            preparedStatement.setInt(2, contactId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
