@@ -26,6 +26,10 @@ public class DashBoardServlet extends HttpServlet {
             throws ServletException, IOException {
         List<Contact> listContact = contactDAO.selectActiveContacts();
         request.setAttribute("listContact", listContact);
+        
+        List<Contact> archivedContacts = contactDAO.selectArchivedContacts();
+        request.setAttribute("listArchivedContacts", archivedContacts);
+        
         RequestDispatcher dispatcher = request.getRequestDispatcher("DashBoard.jsp");
         dispatcher.forward(request, response);
     }
