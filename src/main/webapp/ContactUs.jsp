@@ -68,5 +68,8 @@
 
         <button type="submit">Submit</button>
     </form>
+    
+    <br><br>
+    <a href="logout">Logout</a>
 </body>
 </html>

@@ -118,6 +118,8 @@
     </table>
     <br><br>
     <a href="contactUs">Contact Us</a>
+    <a href="logout">Logout</a>
+    
     
 </body>
 </html>
