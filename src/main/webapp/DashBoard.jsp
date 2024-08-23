@@ -117,9 +117,7 @@
         </tbody>
     </table>
     <br><br>
-    <form action="ContactUs">
-    <input type ="submit" value="Contact Us">
-    </form>
+    <a href="contactUs">Contact Us</a>
     
 </body>
 </html>

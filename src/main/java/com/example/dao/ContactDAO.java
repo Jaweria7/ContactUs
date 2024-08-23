@@ -13,7 +13,8 @@ public class ContactDAO {
 
     private static final String SELECT_ACTIVE_CONTACTS = "SELECT id, name, email, message, status FROM contacts WHERE status = 'active'";
     private static final String SELECT_ARCHIVED_CONTACTS = "SELECT id, name, email, message, status FROM contacts WHERE status = 'archive'";
-
+    private static final String INSERT_CONTACT = "INSERT INTO contacts (name, email, message, status) VALUES (?, ?, ?, ?)";
+    
     protected Connection getConnection() {
         Connection connection = null;
         try {
@@ -73,6 +74,20 @@ public class ContactDAO {
              PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
             preparedStatement.setString(1, newStatus);
             preparedStatement.setInt(2, contactId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void insertContact(Contact contact) {
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CONTACT)) {
+            preparedStatement.setString(1, contact.getName());
+            preparedStatement.setString(2, contact.getEmail());
+            preparedStatement.setString(3, contact.getMessage());
+            preparedStatement.setString(4, contact.getStatus());
+
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
