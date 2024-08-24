@@ -15,12 +15,16 @@ public class LogoutServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Invalidate the session
-        HttpSession session = request.getSession();
+    	HttpSession session = request.getSession(false); // Get the session if it exists
         if (session != null) {
-            session.invalidate();
+            session.invalidate(); // Invalidate the session
         }
 
-        response.sendRedirect("Login.jsp");
+        // Prevent caching of pages to stop the back button from accessing secured content
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+        response.setDateHeader("Expires", 0); // Proxies.
+
+        response.sendRedirect("Login.jsp?message=You have been logged out.");
     }
 }

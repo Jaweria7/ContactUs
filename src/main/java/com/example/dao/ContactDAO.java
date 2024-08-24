@@ -68,6 +68,7 @@ public class ContactDAO {
         return contacts;
     }
     
+    // switching between active and archive
     public void updateContactStatus(int contactId, String newStatus) {
         String updateQuery = "UPDATE contacts SET status = ? WHERE id = ?";
         try (Connection connection = getConnection();
@@ -80,6 +81,7 @@ public class ContactDAO {
         }
     }
     
+    //ContactUs page insertion
     public void insertContact(Contact contact) {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CONTACT)) {

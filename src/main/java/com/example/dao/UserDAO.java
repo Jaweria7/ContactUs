@@ -1,6 +1,5 @@
 package com.example.dao;
 
-import com.example.model.User;
 import java.sql.*;
 
 public class UserDAO {
@@ -24,7 +23,7 @@ public class UserDAO {
     public boolean validateUser(String username, String password) {
         boolean isValid = false;
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(VALIDATE_USER_SQL);) {
+            PreparedStatement preparedStatement = connection.prepareStatement(VALIDATE_USER_SQL);) {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
 

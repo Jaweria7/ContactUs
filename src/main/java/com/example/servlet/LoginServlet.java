@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -28,10 +29,11 @@ public class LoginServlet extends HttpServlet {
         boolean isValidUser = userDAO.validateUser(username, password);
 
         if (isValidUser) {
-            // Redirect to the existing dashboard
+        	HttpSession session = request.getSession();
+            session.setAttribute("username", username);
             response.sendRedirect("dashboard");
-        } else {
-            // Show error message if invalid credentials
+        } 
+        else {
             request.setAttribute("errorMessage", "Invalid Username or Password");
             RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
             dispatcher.forward(request, response);

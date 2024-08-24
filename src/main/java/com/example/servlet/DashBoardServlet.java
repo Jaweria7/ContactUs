@@ -9,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,9 +26,16 @@ public class DashBoardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        loadDashboardData(request);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("DashBoard.jsp");
-        dispatcher.forward(request, response);
+    	HttpSession session = request.getSession(false);
+    	
+    	if (session == null || session.getAttribute("username") == null) {
+            response.sendRedirect("Login.jsp");  // Redirect to login if not logged in
+        } else {
+            // Proceed to show the dashboard
+        	loadDashboardData(request);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("DashBoard.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 
     @Override
