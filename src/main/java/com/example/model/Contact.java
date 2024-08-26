@@ -7,7 +7,6 @@ public class Contact {
 	private String message;
 	private String status;
 
-	// Constructor for creating a new contact
 	public Contact(String name, String email, String message, String status) {
 		this.name = name;
 		this.email = email;
@@ -15,7 +14,6 @@ public class Contact {
 		this.status = status;
 	}
 
-	// Constructor for fetching contact from DB (with id)
 	public Contact(int id, String name, String email, String message, String status) {
 		this.id = id;
 		this.name = name;
@@ -24,7 +22,6 @@ public class Contact {
 		this.status = status;
 	}
 
-	// Getters and Setters
 	public int getId() {
 		return id;
 	}

@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 		userDAO = new UserDAO();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");

@@ -25,13 +25,13 @@ public class ContactDAO {
 		}
 		return connection;
 	}
-
-	// Fetch active contacts
+	
+	//active 
 	public List<Contact> selectActiveContacts() {
 		List<Contact> contacts = new ArrayList<>();
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ACTIVE_CONTACTS);) {
-			ResultSet rs = preparedStatement.executeQuery();
+				ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
 				int id = rs.getInt("id");
@@ -47,7 +47,7 @@ public class ContactDAO {
 		return contacts;
 	}
 
-	// Fetch archived contacts
+	//archive
 	public List<Contact> selectArchivedContacts() {
 		List<Contact> contacts = new ArrayList<>();
 		try (Connection connection = getConnection();
