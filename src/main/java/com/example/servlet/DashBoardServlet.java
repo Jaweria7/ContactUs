@@ -26,13 +26,11 @@ public class DashBoardServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession();
 
-		if (session == null || session.getAttribute("username") == null) {
-			response.sendRedirect("Login.jsp"); // Redirect to login if not logged in
-		} 
-		else {
-			// Proceed to show the dashboard
+		if (session == null || session.getAttribute("user") == null) {
+			response.sendRedirect("Login.jsp");
+		} else {
 			loadDashboardData(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("DashBoard.jsp");
 			dispatcher.forward(request, response);
@@ -48,10 +46,7 @@ public class DashBoardServlet extends HttpServlet {
 		String newStatus = "active".equals(currentStatus) ? "archive" : "active";
 		contactDAO.updateContactStatus(contactId, newStatus);
 
-		// Reload the dashboard data
 		loadDashboardData(request);
-
-		// Redirect back to the dashboard
 		response.sendRedirect("dashboard");
 	}
 

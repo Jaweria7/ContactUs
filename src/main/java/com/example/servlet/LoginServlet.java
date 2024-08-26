@@ -1,6 +1,7 @@
 package com.example.servlet;
 
 import com.example.dao.UserDAO;
+import com.example.model.User;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -26,14 +27,13 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		boolean isValidUser = userDAO.validateUser(username, password);
+		User user = userDAO.validateUser(username, password);
 
-		if (isValidUser) {
+		if (user != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("username", username);
+			session.setAttribute("user", user);
 			response.sendRedirect("dashboard");
-		} 
-		else {
+		} else {
 			request.setAttribute("errorMessage", "Invalid Username or Password");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
 			dispatcher.forward(request, response);

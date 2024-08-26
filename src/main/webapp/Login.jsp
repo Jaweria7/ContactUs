@@ -3,15 +3,18 @@
 <head>
     <title>Login</title>
     <style>
+    	h2 {
+    		text-align: center;
+    	}
+    	
         form {
-            max-width: 100%;
+            max-width: 30%;
             margin: 0 auto;
             border: 2px solid #000;
             padding: 20px;
-  			width: 300px; 
         }
         
-        input{
+        input {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
@@ -35,7 +38,7 @@
 </head>
 <body>
 
-    <h2 style="text-align: center">Admin Login</h2>
+    <h2>Admin Login</h2>
     <form action="login" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br><br>

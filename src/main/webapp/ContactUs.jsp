@@ -1,79 +1,81 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 response.setDateHeader("Expires", 0); // Proxies.
- %>
+%>
 <html>
 <head>
-    <title>Contact Us</title>
-    <style>
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
+<title>Contact Us</title>
+<style>
+form {
+	max-width: 600px;
+	margin: 0 auto;
+}
 
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
+label {
+	display: block;
+	margin: 10px 0 5px;
+}
 
-        input, textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+input, textarea {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
 
-        button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            background-color: #28a745;
-            color: white;
-            cursor: pointer;
-        }
+button {
+	padding: 10px 15px;
+	border: none;
+	border-radius: 4px;
+	background-color: #28a745;
+	color: white;
+	cursor: pointer;
+}
 
-        button:hover {
-            background-color: #218838;
-        }
+button:hover {
+	background-color: #218838;
+}
 
-        .message {
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            border-radius: 4px;
-        }
-    </style>
+.message {
+	margin: 20px 0;
+	padding: 10px;
+	background-color: #d4edda;
+	color: #155724;
+	border: 1px solid #c3e6cb;
+	border-radius: 4px;
+}
+</style>
 </head>
 <body>
-    <h2 style="text-align: center">Contact Us</h2>
-    
-    <%
-        String successMessage = (String) request.getAttribute("successMessage");
-        if (successMessage != null) {
-    %>
-        <div class="message"><%= successMessage %></div>
-    <%
-        }
-    %>
-    
-    <form action="contactUs" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+	<h2 style="text-align: center">Contact Us</h2>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+	<%
+	String successMessage = (String) request.getAttribute("successMessage");
+	if (successMessage != null) {
+	%>
+	<div class="message"><%=successMessage%></div>
+	session.removeAttribute("successMessage");
+	<%
+	}
+	%>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
+	<form action="contactUs" method="post">
+		<label for="name">Name:</label> <input type="text" id="name"
+			name="name" required> <label for="email">Email:</label> <input
+			type="email" id="email" name="email" required> <label
+			for="message">Message:</label>
+		<textarea id="message" name="message" rows="4" required></textarea>
 
-        <button type="submit">Submit</button>
-    </form>
-    
-    <br><br>
-    <a href="logout">Logout</a>
+		<button type="submit">Submit</button>
+	</form>
+
+	<br>
+	<br>
+	<div style="text-align: center;">
+		<a href="logout">Logout</a>
+	</div>
 </body>
 </html>

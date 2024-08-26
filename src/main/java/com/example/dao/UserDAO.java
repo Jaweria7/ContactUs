@@ -2,6 +2,8 @@ package com.example.dao;
 
 import java.sql.*;
 
+import com.example.model.User;
+
 public class UserDAO {
 	private String jdbcURL = "jdbc:postgresql://localhost:5433/postgres";
 	private String jdbcUsername = "Jaweria_Jawed";
@@ -20,8 +22,9 @@ public class UserDAO {
 		return connection;
 	}
 
-	public boolean validateUser(String username, String password) {
-		boolean isValid = false;
+	public User validateUser(String username, String password) {
+		User user = null;
+
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(VALIDATE_USER_SQL);) {
 			preparedStatement.setString(1, username);
@@ -29,11 +32,12 @@ public class UserDAO {
 
 			ResultSet rs = preparedStatement.executeQuery();
 			if (rs.next()) {
-				isValid = true;
+				int id = rs.getInt("id");
+				user = new User(id, username, password);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return isValid;
+		return user;
 	}
 }
