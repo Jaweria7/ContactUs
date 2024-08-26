@@ -47,7 +47,8 @@ public class DashBoardServlet extends HttpServlet {
 		contactDAO.updateContactStatus(contactId, newStatus);
 
 		loadDashboardData(request);
-		response.sendRedirect("dashboard");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("dashboard");
+		dispatcher.forward(request, response);
 	}
 
 	private void loadDashboardData(HttpServletRequest request) {
