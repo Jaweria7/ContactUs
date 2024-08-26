@@ -33,16 +33,6 @@
         button:hover {
             background-color: #218838;
         }
-        
-        .message {
-			margin: 20px 0;
-			padding: 10px;
-			background-color: #ff7f7f;
-			color: #4c0000;
-			border: 1px solid #c3e6cb;
-			border-radius: 4px;
-			text-align: center;
-		}
     </style>
     
 </head>
@@ -60,7 +50,7 @@
     <%
     String errorMessage = (String) request.getAttribute("errorMessage");
     if (errorMessage != null && !errorMessage.isEmpty()) { %>
-    <div class="message"><%= errorMessage %></div>
+    <%= errorMessage %>
 	<% } %>
 	
 </body>

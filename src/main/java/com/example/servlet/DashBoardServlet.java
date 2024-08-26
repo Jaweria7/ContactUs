@@ -29,7 +29,7 @@ public class DashBoardServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if (session == null || session.getAttribute("user") == null) {
-			response.sendRedirect("login");
+			response.sendRedirect("Login.jsp");
 		} else {
 			loadDashboardData(request);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("DashBoard.jsp");
