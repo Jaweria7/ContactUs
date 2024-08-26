@@ -8,7 +8,7 @@
 
     session = request.getSession();
     if (session == null || session.getAttribute("user") == null) {
-        response.sendRedirect("Login.jsp");
+        response.sendRedirect("login");
         return;
     }
 %>

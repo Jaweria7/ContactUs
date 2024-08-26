@@ -1,54 +1,55 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-response.setDateHeader("Expires", 0); // Proxies.
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	response.setDateHeader("Expires", 0); // Proxies.
 %>
 <html>
-<head>
-<title>Contact Us</title>
-<style>
-form {
-	max-width: 600px;
-	margin: 0 auto;
-}
-
-label {
-	display: block;
-	margin: 10px 0 5px;
-}
-
-input, textarea {
-	width: 100%;
-	padding: 8px;
-	margin-bottom: 10px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-}
-
-button {
-	padding: 10px 15px;
-	border: none;
-	border-radius: 4px;
-	background-color: #28a745;
-	color: white;
-	cursor: pointer;
-}
-
-button:hover {
-	background-color: #218838;
-}
-
-.message {
-	margin: 20px 0;
-	padding: 10px;
-	background-color: #d4edda;
-	color: #155724;
-	border: 1px solid #c3e6cb;
-	border-radius: 4px;
-}
-</style>
-</head>
+	<head>
+		<title>Contact Us</title>
+		<style>
+			form {
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			
+			label {
+				display: block;
+				margin: 10px 0 5px;
+			}
+			
+			input, textarea {
+				width: 100%;
+				padding: 8px;
+				margin-bottom: 10px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+			}
+			
+			button {
+				padding: 10px 15px;
+				border: none;
+				border-radius: 4px;
+				background-color: #28a745;
+				color: white;
+				cursor: pointer;
+			}
+			
+			button:hover {
+				background-color: #218838;
+			}
+			
+			.message {
+				margin: 20px 0;
+				padding: 10px;
+				background-color: #d4edda;
+				color: #155724;
+				border: 1px solid #c3e6cb;
+				border-radius: 4px;
+				text-align: center;
+			}
+		</style>
+	</head>
 <body>
 	<h2 style="text-align: center">Contact Us</h2>
 
@@ -57,8 +58,7 @@ button:hover {
 	if (successMessage != null) {
 	%>
 	<div class="message"><%=successMessage%></div>
-	session.removeAttribute("successMessage");
-	<%
+	<%session.removeAttribute("successMessage");
 	}
 	%>
 
@@ -76,6 +76,7 @@ button:hover {
 	<br>
 	<div style="text-align: center;">
 		<a href="logout">Logout</a>
+		<a href="dashboard">Dashboard</a>
 	</div>
 </body>
 </html>
