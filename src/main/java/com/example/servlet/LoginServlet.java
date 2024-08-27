@@ -32,11 +32,11 @@ public class LoginServlet extends HttpServlet {
 		if (user != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			response.sendRedirect("dashboard");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("dashboard");
+			dispatcher.forward(request, response);
 		} else {
 			request.setAttribute("errorMessage", "Invalid Username or Password");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
-			dispatcher.forward(request, response);
+			response.sendRedirect("Login.jsp");
 		}
 	}
 }
