@@ -64,7 +64,7 @@ The Contact Us Project is a web application that allows users to submit contact 
 
 ### Accessing the Application
 
-1. **Login**: Access the login page at `http://localhost:8080/ContactUsProject/Login.jsp`.
+1. **Login**: Access the login page at `http://localhost:8080/ContactUsProject/LoginServlet.java`.
 2. **Dashboard**: After logging in, navigate to the dashboard.
 3. **Contact Us**: Access the contact form.
 
