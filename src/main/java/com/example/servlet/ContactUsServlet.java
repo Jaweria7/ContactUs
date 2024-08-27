@@ -36,7 +36,7 @@ public class ContactUsServlet extends HttpServlet {
 		Contact contact = new Contact(name, email, message, "active");
 		contactDAO.insertContact(contact);
 
-		request.setAttribute("successMessage", "Your contact information has been submitted successfully.");
+		request.setAttribute("successMessage", "Your information has been submitted successfully.");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ContactUs.jsp");
 		dispatcher.forward(request, response);
 	}

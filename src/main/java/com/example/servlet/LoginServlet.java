@@ -21,6 +21,12 @@ public class LoginServlet extends HttpServlet {
 	public void init() {
 		userDAO = new UserDAO();
 	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
+		dispatcher.forward(request, response);
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -32,11 +38,11 @@ public class LoginServlet extends HttpServlet {
 		if (user != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("dashboard");
-			dispatcher.forward(request, response);
+			response.sendRedirect("dashboard");
 		} else {
 			request.setAttribute("errorMessage", "Invalid Username or Password");
-			response.sendRedirect("Login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 }

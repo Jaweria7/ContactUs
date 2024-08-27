@@ -8,7 +8,7 @@
 
     session = request.getSession();
     if (session == null || session.getAttribute("user") == null) {
-        response.sendRedirect("Login.jsp");
+        response.sendRedirect("login");
         return;
     }
 %>
@@ -35,6 +35,9 @@
             padding: 5px 10px;
             margin: 2px;
             cursor: pointer;
+        }
+        div{
+        	text-align: center;
         }
     </style>
 </head>
@@ -129,8 +132,10 @@
         </tbody>
     </table>
     <br><br>
+    <div>
     <a href="contactUs">Contact Us</a>
     <a href="logout">Logout</a>
+    </div>
     
     
 </body>
